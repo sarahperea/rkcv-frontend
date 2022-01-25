@@ -13,7 +13,6 @@
 
 <script>
 
-import DataTable from './components/DataTable';
 import Tab1 from './modules/Tab1'
 import Tab2 from './modules/Tab2'
 import Tab3 from './modules/Tab3'
@@ -24,8 +23,7 @@ export default {
   components: {
     Tab1,
     Tab2,
-    Tab3,
-    DataTable
+    Tab3
   },
 
   data: () => ({
