@@ -23,7 +23,14 @@
     },
     methods: {
         async initializeTableData () {
-            await getTableData();
+          
+          // sample try catch, getting of response
+          try {
+            let response = await getTableData();
+            console.log(response)
+          } catch (err) {
+            console.log(err)
+          }
         }
     }
   }
