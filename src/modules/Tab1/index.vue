@@ -8,6 +8,7 @@
 <script>
 
   import DataTable from '@/components/DataTable'
+  import {getTableData} from "@/api/table";
 
   export default {
     name: 'Tab1',
@@ -16,6 +17,14 @@
     },
 
     data: () => ({
-    })
+    }),
+    mounted () {
+        this.initializeTableData()
+    },
+    methods: {
+        async initializeTableData () {
+            await getTableData();
+        }
+    }
   }
 </script>
