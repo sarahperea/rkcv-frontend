@@ -1,43 +1,12 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
     <v-main>
+      <v-tabs>
+        <v-tab v-for="(tab, index) in tabs" :key="tab" @click="selectTab(index)">
+          {{ tab }}
+        </v-tab>
+      </v-tabs>
+      <component :is="activeComponent"/>
       <DataTable/>
       <HelloWorld/>
     </v-main>
@@ -45,19 +14,34 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+
 import DataTable from './components/DataTable';
+import Tab1 from './modules/Tab1'
+import Tab2 from './modules/Tab2'
+import Tab3 from './modules/Tab3'
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Tab1,
+    Tab2,
+    Tab3,
     DataTable
   },
 
   data: () => ({
-    //
+    tabs: [
+      'Tab1',
+      'Tab2',
+      'Tab3'
+    ],
+    activeComponent: 'Tab1'
   }),
+  methods: {
+    selectTab(tabIndex) {
+      this.activeComponent = this.tabs[tabIndex];
+    }
+  }
 };
 </script>
