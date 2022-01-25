@@ -7,8 +7,6 @@
         </v-tab>
       </v-tabs>
       <component :is="activeComponent"/>
-      <DataTable/>
-      <HelloWorld/>
     </v-main>
   </v-app>
 </template>
